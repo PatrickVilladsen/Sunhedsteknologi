@@ -27,7 +27,6 @@ def volume_for_dose(dose_mg: float, stock_mg: float, stock_ml: float) -> float:
     # 4) return volume
     pass
 
-
 def convert_mg_to_g(value_mg: float) -> float:
     """
     Konverter milligram (mg) til gram (g).
@@ -59,6 +58,12 @@ def infusion_rate_mL_per_h(dose_mg_per_h: float, concentration_mg_per_mL: float)
     # 1) Tjek at dose_mg_per_h > 0 og concentration_mg_per_mL > 0, ellers: raise ValueError
     # 2) return dose_mg_per_h / concentration_mg_per_mL
     pass
+    try:
+        assert dose_mg_per_h > 0, "input skal være større end 0"
+        assert concentration_mg_per_mL > 0, "input skal være større end 0"
+        return dose_mg_per_h / concentration_mg_per_mL
+    except AssertionError as e:
+        raise ValueError(e)
 
 
 def dilution_stock_volume(C1: float, C2: float, V2: float) -> float:
