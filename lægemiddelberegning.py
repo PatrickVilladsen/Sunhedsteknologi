@@ -77,4 +77,10 @@ def dilution_stock_volume(C1: float, C2: float, V2: float) -> float:
     # 2) Tjek at C2 < C1, ellers: raise ValueError
     # 3) V1 = (C2 * V2) / C1
     # 4) return V1
-    pass
+    if C1 < 0 or C2 < 0 or V2 < 0:
+        raise ValueError("Værdier skal være positive")
+    if C2 > C1:
+        raise ValueError("C2 skal være mindre end C1")
+    V1 = (C2 * V2) / C1
+    return float(V1)
+    
